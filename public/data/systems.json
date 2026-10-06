@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Scholarship Application System",
+        "description": "A system for managing scholarships and applications.",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "title": "HR Employee Management Management System",
+        "description": "A system for managing human resources and employee information.",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "title": "Grading Management System",
+        "description": "A system for managing grades and records.",
+        "link": "#"
+    },
+    {
+        "id": 4,
+        "title": "Finance Management System",
+        "description": "A system for managing financial records and transactions.",
+        "link": "#"
+    },
+    {
+        "id": 5,
+        "title": "Attendance Monitoring System",
+        "description": "A system for monitoring attendance and tracking employee presence.",
+        "link": "#"
+    }
+]
