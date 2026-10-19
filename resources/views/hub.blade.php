@@ -123,41 +123,48 @@
         .back-to-top[hidden] {
             display: none;
         }
+
+        .system-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid container-size container-gradient">
-        <main class="hub-content px-3 px-lg-5">
-            <div class="row align-items-center py-4 py-lg-5">
-                <div class="col-12 col-md-8 order-2 order-md-1">
-                    <h1 class="display-5 text-light fw-bold">La Verdad Information System</h1>
-                    <p class="lead mb-0 text-light">The ultimate destination for all systems in one place.</p>
-                </div>
-                <div class="col-12 col-md-4 order-1 order-md-2 d-flex justify-content-end mb-3 mb-md-0">
-                    <a href="https://web.uat.laverdad.edu.ph" rel="noopener noreferrer" aria-label="Home"
-                        class="btn btn-link home-btn text-decoration-none text-light btn-sm px-4 rounded-pill">
-                        <i class="ri-home-fill"></i>
-                        <span>HOME</span>
-                    </a>
-                </div>
+    <div class="container-fluid px-0 container-size">
+        <div class="d-flex justify-content-start align-items-center py-4 py-lg-4 mb-4" style="background: #004AAD;">
+            <img src="{{ asset('images/logo.png') }}" alt="La Verdad Logo" class="order"
+                style="max-width: 100px; height: auto;">
+            <div class="order-2 order-md-1 text-start ps-1">
+                <h1 class="display-6 text-light fw-bold">La Verdad Information Systems Hub</h1>
+                <p class="mb-0 text-light">The ultimate destination for all systems in one place.</p>
             </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-4 pb-4 pb-lg-5">
+            {{-- <div class="col-12 col-md-4 order-1 order-md-2 d-flex justify-content-end mb-3 mb-md-0">
+                <a href="https://web.uat.laverdad.edu.ph" rel="noopener noreferrer" aria-label="Home"
+                    class="btn btn-link home-btn text-decoration-none text-dark btn-sm px-4 rounded-pill">
+                    <i class="ri-home-fill"></i>
+                    <span>HOME</span>
+                </a>
+            </div> --}}
+        </div>
+        <main class="hub-content px-3 px-lg-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-4 pb-4 pb-lg-5">
                 @foreach($systems as $system)
-                    <div class="col">
-                        <x-card title="{{ $system['title'] }}" description="{{ $system['description'] }}" badge="SYSTEM"
-                            members="1.2k+" />
+                    <div class="col system-item">
+                        <x-card-v2 title="{{ $system['title'] }}" description="{{ $system['description'] }}"
+                            href="{{ $system['link'] }}" />
                     </div>
                 @endforeach
             </div>
         </main>
-        <footer class="d-flex justify-content-center py-3 text-light">
+        <footer class="d-flex justify-content-center py-3 text-dark">
             <span class="fs-6">&copy; {{ date('Y') }} · La Verdad Christian College, Inc.</span>
         </footer>
     </div>
 
-    <button type="button" id="back-to-top" class="btn btn-warning rounded-pill back-to-top" aria-label="Back to top"
-        title="Back to top" hidden>
+    <button type="button" id="back-to-top" class="btn btn-outline-dark rounded-pill back-to-top"
+        aria-label="Back to top" title="Back to top" hidden>
         <i class="ri-arrow-up-line" aria-hidden="true"></i>
         <span>Back to top</span>
     </button>

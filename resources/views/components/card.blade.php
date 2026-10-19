@@ -192,10 +192,54 @@ Place card-system-placeholder.svg in public/images/
             position: relative;
             z-index: 1;
         }
+
+        /* System Card */
+
+
+        .system-card {
+            perspective: 1200px;
+            height: 220px;
+        }
+
+        .system-card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .system-card:hover .system-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .system-card-front,
+        .system-card-back {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 8px 20px #00000026;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .system-card-back {
+            transform: rotateY(180deg);
+            font-size: .95rem;
+            line-height: 1.6;
+        }
     </style>
 @endonce
 
-<div class="card app-card">
+{{-- <div class="card app-card">
     <img src="{{ $image ?? asset('images/card-system-placeholder.svg') }}" class="card-img" alt="">
     <div class="ac-overlay"></div>
 
@@ -207,12 +251,24 @@ Place card-system-placeholder.svg in public/images/
             <p class="ac-desc mb-4">{{ $description }}</p>
 
             <div class="ac-footer d-flex align-items-center justify-content-end">
-                {{-- <div class="d-flex align-items-center gap-2">
-                    <span class="ac-dot"></span>
-                    <small class="text-white-50">{{ $meta }}</small>
-                </div> --}}
 
                 <a href="{{ $href }}" class="btn btn-light rounded-pill ac-cta">{{ $cta }}</a>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="system-card">
+    <div class="system-card-inner">
+        <div class="system-card-front">
+            <div>
+                <h5>{{ $title }}</h5>
+            </div>
+        </div>
+        <div class="system-card-back">
+            <div>
+                <p class="mb-2">{{ $description }}</p>
+                <a href="{{ $href }}" class="btn btn-light rounded-pill mt-3">{{ $cta }}</a>
             </div>
         </div>
     </div>
