@@ -11,6 +11,11 @@
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.cdnfonts.com/css/tolkien" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -53,8 +58,6 @@
             margin-inline: auto;
         } */
 
-        /* Shared expandable icon-and-label button layout */
-        .home-btn,
         .back-to-top {
             display: inline-flex;
             align-items: center;
@@ -62,14 +65,11 @@
             transition: gap 0.4s ease;
         }
 
-        .home-btn:hover,
-        .home-btn:focus-visible,
         .back-to-top:hover,
         .back-to-top:focus-visible {
             gap: 0.4rem;
         }
 
-        .home-btn i,
         .back-to-top i {
             font-size: 1.9rem;
             transition: font-size 0.2s ease;
@@ -79,7 +79,6 @@
             font-size: 1.5rem;
         }
 
-        .home-btn span,
         .back-to-top span {
             max-width: 0;
             font-size: 0.8rem;
@@ -91,8 +90,6 @@
             transition: max-width 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
         }
 
-        .home-btn:hover span,
-        .home-btn:focus-visible span,
         .back-to-top:hover span,
         .back-to-top:focus-visible span {
             max-width: 6rem;
@@ -100,16 +97,9 @@
             visibility: visible;
         }
 
-        .home-btn:hover i,
-        .home-btn:focus-visible i,
         .back-to-top:hover i,
         .back-to-top:focus-visible i {
             font-size: 1.6rem;
-        }
-
-        /* Home button interaction */
-        .home-btn:hover {
-            color: var(--bs-warning);
         }
 
         /* Fixed back-to-top button placement and hidden-state handling */
@@ -128,36 +118,40 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .fst-inter {
+            font-family: Inter, sans-serif;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid px-0 container-size d-flex flex-column">
-        <div class="d-flex justify-content-start align-items-center px-lg-4 py-4 py-lg-4 mb-4"
-            style="background: #004AAD;">
-            <img src="{{ asset('images/logo.png') }}" alt="La Verdad Logo" class="order"
-                style="max-width: 100px; height: auto;">
-            <div class="order-2 order-md-1 text-start ps-1">
-                <h1 class="display-6 text-light fw-bold">La Verdad Information Systems Hub</h1>
-                <p class="mb-0 text-light">The ultimate destination for all systems in one place.</p>
+        <x-hub-navbar />
+        <main class="flex-grow-1 d-flex flex-column container">
+            <div class="row text-center py-4 my-4">
+                <p class="mb-0 display-6 fw-bold text-dark fst-inter">Information Systems Hub</p>
+                <p class="mb-0 fs-6 text-dark fst-inter">The ultimate destination for all systems in one place.</p>
             </div>
-            {{-- <div class="col-12 col-md-4 order-1 order-md-2 d-flex justify-content-end mb-3 mb-md-0">
-                <a href="https://web.uat.laverdad.edu.ph" rel="noopener noreferrer" aria-label="Home"
-                    class="btn btn-link home-btn text-decoration-none text-dark btn-sm px-4 rounded-pill">
-                    <i class="ri-home-fill"></i>
-                    <span>HOME</span>
-                </a>
-            </div> --}}
-        </div>
-        <main class="px-3 px-lg-5 flex-grow-1 d-flex flex-column">
-            @if(count($systems) > 0)
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-4">
+
+
+            <section class="container mb-4" aria-label="Search and filter systems">
+                <x-search-bar :search="$search" :filter="$filter" />
+                <x-tab-filter-section :filters="$filterTabs" />
+            </section>
+
+            @if($systems->isNotEmpty())
+                <div id="system-grid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 gy-4">
                     @foreach($systems as $system)
                         <div class="col system-item">
-                            <x-card-v2 title="{{ $system['title'] }}" description="{{ $system['description'] }}"
-                                href="{{ $system['link'] }}" />
+                            <x-card-v3 title="{{ $system['title'] }}" department="{{ $system['department'] }}"
+                                description="{{ $system['description'] }}" href="{{ $system['link'] }}" />
                         </div>
                     @endforeach
+                </div>
+            @elseif($hasSystems)
+                <div class="row flex-grow-1 justify-content-center align-items-center">
+                    No systems match your search or selected category.
                 </div>
             @else
                 <div class="row flex-grow-1 justify-content-center align-items-center">
@@ -196,6 +190,7 @@
                 behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
             });
         });
+
     </script>
 </body>
 

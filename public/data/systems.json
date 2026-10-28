@@ -2,30 +2,42 @@
     {
         "id": 1,
         "title": "Scholarship Application System",
+        "department": "Registration and Admissions Department",
+        "description": "A system for managing scholarships and applications.",
+        "link": "#"
+    },
+    {
+        "id": 1,
+        "title": "Enrollment Application System",
+        "department": "Registration and Admissions Department",
         "description": "A system for managing scholarships and applications.",
         "link": "#"
     },
     {
         "id": 2,
-        "title": "HR: Employee Management Management System",
-        "description": "A system for managing human resources and employee information.",
+        "title": "Employee Data Management System",
+        "department": "Human Resources Department",
+        "description": "A system for human resources to manage employee information.",
         "link": "#"
     },
     {
         "id": 3,
         "title": "Grading Management System",
+        "department": "Registration and Admissions Department",
         "description": "A system for managing student grades and records.",
         "link": "#"
     },
     {
         "id": 4,
         "title": "Finance Management System",
+        "department": "Finance Department",
         "description": "A system for managing financial records and transactions.",
         "link": "#"
     },
     {
         "id": 5,
         "title": "Attendance Monitoring System",
+        "department": "Human Resources Department",
         "description": "A system for monitoring attendance and tracking employee presence.",
         "link": "#"
     }
