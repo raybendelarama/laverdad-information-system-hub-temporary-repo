@@ -60,7 +60,7 @@
         <div
             class="card-v3-content position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end justify-content-center p-3 text-white">
             <span class="btn btn-sm btn-primary rounded-pill px-2 py-1">
-                <span class="fw-semibold"><i class="ri-login-box-line fs-6"></i> Log in</span>
+                <span class="fw-semibold"><i class="ri-login-box-line fs-6"></i> Go to portal</span>
             </span>
         </div>
     </div>
@@ -69,9 +69,9 @@
         <h5 class="card-title text-left pt-2">{{ $title }}</h5>
         <p class="card-text text-left">{{ $description }}</p>
 
-        <div class="border-top py-3 d-flex align-items-center gap-2 text-primary">
+        {{-- <div class="border-top py-3 d-flex align-items-center gap-2 text-primary">
             <span class="fw-semibold">Go to the portal</span>
             <i class="ri-arrow-right-long-line fs-4 fw-normal"></i>
-        </div>
+        </div> --}}
     </div>
 </a>

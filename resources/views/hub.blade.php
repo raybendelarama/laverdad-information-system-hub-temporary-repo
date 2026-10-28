@@ -130,7 +130,7 @@
         <x-hub-navbar />
         <main class="flex-grow-1 d-flex flex-column container">
             <div class="row text-center py-4 my-4">
-                <p class="mb-0 display-6 fw-bold text-dark fst-inter">Information Systems Hub</p>
+                <p class="mb-0 display-6 fw-bold text-dark fst-inter">La Verdad System Portals</p>
                 <p class="mb-0 fs-6 text-dark fst-inter">The ultimate destination for all systems in one place.</p>
             </div>
 
