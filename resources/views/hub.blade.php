@@ -132,8 +132,9 @@
 </head>
 
 <body>
-    <div class="container-fluid px-0 container-size">
-        <div class="d-flex justify-content-start align-items-center py-4 py-lg-4 mb-4" style="background: #004AAD;">
+    <div class="container-fluid px-0 container-size d-flex flex-column">
+        <div class="d-flex justify-content-start align-items-center px-lg-4 py-4 py-lg-4 mb-4"
+            style="background: #004AAD;">
             <img src="{{ asset('images/logo.png') }}" alt="La Verdad Logo" class="order"
                 style="max-width: 100px; height: auto;">
             <div class="order-2 order-md-1 text-start ps-1">
@@ -148,15 +149,21 @@
                 </a>
             </div> --}}
         </div>
-        <main class="hub-content px-3 px-lg-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-4 pb-4 pb-lg-5">
-                @foreach($systems as $system)
-                    <div class="col system-item">
-                        <x-card-v2 title="{{ $system['title'] }}" description="{{ $system['description'] }}"
-                            href="{{ $system['link'] }}" />
-                    </div>
-                @endforeach
-            </div>
+        <main class="px-3 px-lg-5 flex-grow-1 d-flex flex-column">
+            @if(count($systems) > 0)
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-4">
+                    @foreach($systems as $system)
+                        <div class="col system-item">
+                            <x-card-v2 title="{{ $system['title'] }}" description="{{ $system['description'] }}"
+                                href="{{ $system['link'] }}" />
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="row flex-grow-1 justify-content-center align-items-center">
+                    No systems available at the moment.
+                </div>
+            @endif
         </main>
         <footer class="d-flex justify-content-center py-3 text-dark">
             <span class="fs-6">&copy; {{ date('Y') }} · La Verdad Christian College, Inc.</span>
