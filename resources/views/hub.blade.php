@@ -159,39 +159,14 @@
                 </div>
             @endif
         </main>
-        <footer class="d-flex justify-content-center py-3 text-dark">
-            <span class="fs-6">&copy; {{ date('Y') }} · La Verdad Christian College, Inc.</span>
-        </footer>
+        <x-hub-footer />
     </div>
 
-    <button type="button" id="back-to-top" class="btn btn-outline-dark rounded-pill back-to-top"
-        aria-label="Back to top" title="Back to top" hidden>
-        <i class="ri-arrow-up-line" aria-hidden="true"></i>
-        <span>Back to top</span>
-    </button>
+    <x-back-to-top-button />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script>
-        const backToTopButton = document.getElementById('back-to-top');
-
-        function updateBackToTopButton() {
-            backToTopButton.hidden = window.scrollY <= window.innerHeight;
-        }
-
-        window.addEventListener('scroll', updateBackToTopButton, { passive: true });
-        window.addEventListener('resize', updateBackToTopButton);
-        updateBackToTopButton();
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-            });
-        });
-
-    </script>
 </body>
 
 </html>
